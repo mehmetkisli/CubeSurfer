@@ -5,7 +5,7 @@ using TMPro;
 
 public class HeroGemsController : MonoBehaviour
 {
-    private int GemsCounter = 0;
+    public int GemsCounter {get ; private set;}
     [SerializeField] TextMeshProUGUI GemsText;
 
     public void CollectGem(GameObject _gameObject){
@@ -16,6 +16,7 @@ public class HeroGemsController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GemsCounter = 0;
         GemsText.text = GemsCounter.ToString();
     }
 

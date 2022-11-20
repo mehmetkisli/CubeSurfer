@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 
 // TODO : Singleton yap
@@ -9,18 +10,25 @@ public class GameOverController : MonoBehaviour
 {
     [SerializeField] HeroMovementController heroMovementController;
     [SerializeField] GameObject FailedScreen;
+    [SerializeField] TextMeshProUGUI FailedScreenScore;
+
     [SerializeField] GameObject SuccessScreen;
+    [SerializeField] TextMeshProUGUI SuccessScreenScore;
+
+    [SerializeField] HeroGemsController heroGemsController;
 
 
 
 
     public void EndOfChapter(){
         ResetMovement();
+        SuccessScreenScore.text = heroGemsController.GemsCounter.ToString();
         SuccessScreen.SetActive(true);
 
     }
     public void FailedChapter(){
         ResetMovement();
+        FailedScreenScore.text = heroGemsController.GemsCounter.ToString();
         FailedScreen.SetActive(true);
     }
     private void ResetMovement(){

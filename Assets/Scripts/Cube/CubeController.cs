@@ -43,21 +43,16 @@ public class CubeController : MonoBehaviour
         }
     }
     private void VerticalRaycast(){
-        int cnt = Physics.RaycastNonAlloc(transform.position, Vector3.down, hits, 1f);
-        if(Physics.RaycastNonAlloc(transform.position, Vector3.down, hits, 1f)  > 0){
-            print(cnt);
+        int cnt;
+        if((cnt = Physics.RaycastNonAlloc(transform.position, Vector3.down, hits, 1f) ) > 0){
             hit = hits [cnt - 1];
             
-
             if(isStack && hit.transform.CompareTag("Fire")){
                 heroStackController.DestroyLastCube(gameObject);
-
             }
             if(isStack && hit.transform.CompareTag("FinalZone")){
                 GameOverController.Instance.EndOfChapter();
-
             }
-
         }
     }
 
