@@ -16,18 +16,27 @@ public class GameOverController : MonoBehaviour
     [SerializeField] TextMeshProUGUI SuccessScreenScore;
 
     [SerializeField] HeroGemsController heroGemsController;
+    [SerializeField] public  Animator animator;
 
 
-
+    public void NextLevel(){
+        int cur = SceneManager.GetActiveScene().buildIndex;
+        Debug.Log(cur);
+        Debug.Log(SceneManager.sceneCount);
+        int nxt = SceneManager.sceneCount == cur + 1 ? 1 : cur + 1;
+        SceneManager.LoadScene(nxt);
+    }
 
     public void EndOfChapter(){
         ResetMovement();
+        animator.SetTrigger("Victory");
         SuccessScreenScore.text = heroGemsController.GemsCounter.ToString();
         SuccessScreen.SetActive(true);
 
     }
     public void FailedChapter(){
         ResetMovement();
+        animator.SetTrigger("Death");
         FailedScreenScore.text = heroGemsController.GemsCounter.ToString();
         FailedScreen.SetActive(true);
     }
