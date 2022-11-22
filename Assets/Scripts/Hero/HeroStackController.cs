@@ -30,11 +30,12 @@ public class HeroStackController : MonoBehaviour
         UpdateLastCubeObject();
     }
     public void DecreaseCubeStack(GameObject _gameObject){
-        GameOverController.Instance.animator.SetTrigger("Landing");
-        _gameObject.transform.parent = null;
-        cubeList.Remove(_gameObject);
-        UpdateLastCubeObject();
-
+        if(_gameObject.transform.parent != null){
+            GameOverController.Instance.animator.SetTrigger("Landing");
+            _gameObject.transform.parent = null;
+            cubeList.Remove(_gameObject);
+            UpdateLastCubeObject();
+        }
     }
 
     public void DestroyLastCube(GameObject _gameObject){

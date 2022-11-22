@@ -17,6 +17,8 @@ public class GameOverController : MonoBehaviour
 
     [SerializeField] HeroGemsController heroGemsController;
     [SerializeField] public  Animator animator;
+    [SerializeField] public  GameObject endOfChapterAnim;
+
 
 
     public void NextLevel(){
@@ -30,6 +32,7 @@ public class GameOverController : MonoBehaviour
     public void EndOfChapter(){
         ResetMovement();
         animator.SetTrigger("Victory");
+        endOfChapterAnim.SetActive(true);
         SuccessScreenScore.text = heroGemsController.GemsCounter.ToString();
         SuccessScreen.SetActive(true);
 

@@ -42,6 +42,7 @@ public class CubeController : MonoBehaviour
                 //sadece stacktaki küpler için geçerli
                 if(hit.transform.CompareTag("Wall")){
                     heroStackController.DecreaseCubeStack(gameObject);
+                    Destroy(this.GetComponent<CubeController>());
                 }
                 else if(hit.transform.CompareTag("Gem")){
                     HeroGemsController.Instance.CollectGem(hit.transform.gameObject);
@@ -63,6 +64,7 @@ public class CubeController : MonoBehaviour
             }
             if(isStack && hit.transform.CompareTag("FinalZone")){
                 GameOverController.Instance.EndOfChapter();
+                Destroy(this.GetComponent<CubeController>());
             }
         }
     }
