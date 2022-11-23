@@ -25,7 +25,14 @@ public class GameOverController : MonoBehaviour
         int cur = SceneManager.GetActiveScene().buildIndex;
         Debug.Log(cur);
         Debug.Log(SceneManager.sceneCount);
-        int nxt = SceneManager.sceneCount == cur + 1 ? 1 : cur + 1;
+        int nxt;
+        if(cur == 2){
+            nxt = 1;
+        }
+        else{
+            nxt = cur + 1;
+        }
+        //int nxt = SceneManager.sceneCount == cur + 1  ? 1 : cur + 1;
         SceneManager.LoadScene(nxt);
     }
 
